@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E88D288D-C826-45C0-90F0-7A0707BE12F8}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PCustomMenus.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MyFDQuery.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FDQueryExportToJSON.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PCustomMenus">
+        <MSBuild Projects="PCustomMenus.dproj"/>
+    </Target>
+    <Target Name="PCustomMenus:Clean">
+        <MSBuild Projects="PCustomMenus.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PCustomMenus:Make">
+        <MSBuild Projects="PCustomMenus.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MyFDQuery">
+        <MSBuild Projects="MyFDQuery.dproj"/>
+    </Target>
+    <Target Name="MyFDQuery:Clean">
+        <MSBuild Projects="MyFDQuery.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MyFDQuery:Make">
+        <MSBuild Projects="MyFDQuery.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FDQueryExportToJSON">
+        <MSBuild Projects="FDQueryExportToJSON.dproj"/>
+    </Target>
+    <Target Name="FDQueryExportToJSON:Clean">
+        <MSBuild Projects="FDQueryExportToJSON.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FDQueryExportToJSON:Make">
+        <MSBuild Projects="FDQueryExportToJSON.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PCustomMenus;MyFDQuery;FDQueryExportToJSON"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PCustomMenus:Clean;MyFDQuery:Clean;FDQueryExportToJSON:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PCustomMenus:Make;MyFDQuery:Make;FDQueryExportToJSON:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
